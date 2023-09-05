@@ -1,0 +1,3 @@
+#!/bin/sh
+echo
+printf "\"It's a Magical World, Hobbes Ol' Buddy ... Let's Go Exploring!\"\n"

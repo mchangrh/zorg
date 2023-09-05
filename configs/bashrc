@@ -1,0 +1,10 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+
+# avoid making mistakes
+alias rm='rm -i'
+# only show relevant interfaces
+alias nload='nload devices vmbr0 wg0'
+# better space usage
+alias zfsspace='zfs list -o name,usedds,usedsnap'
+# start rsync server here
+alias rsynchere='docker run --rm -p 873:873 -v ./:/data ghcr.io/mchangrh/drsync:latest'

@@ -1,0 +1,21 @@
+#!/bin/bash
+hostname=$(hostname -f)
+cpu_load=$(cat /proc/loadavg | cut -d" " -f 1 | echo "scale=4; ($(</dev/stdin)/$(nproc))*100" | bc -l)
+memory_usage=$(awk '/^Mem/ {print $3}' <(free -g))     # in GB
+memory_available=$(awk '/^Mem/ {print $2}' <(free -g)) # in GB
+sys_uptime=$(uptime | awk '{print $3 " " $4}' | sed s'/.$//')
+
+tank_used=$(zpool list tank -Ho alloc)
+tank_avail=$(zpool list tank -Ho size)
+media_used=$(zpool list media -Ho alloc)
+media_avail=$(zpool list media -Ho size)
+vm_used=$(df -h --output=used /vm | tail -n1 | cut -b 2-)
+vm_avail=$(df -h --output=size /vm | tail -n1 | cut -b 2-)
+
+printf "\n"
+printf " ___ ___ ___ ___       Welcome to %s \n" "${hostname}"
+printf "|- _| . |  _| . |      CPU Usage: %s \n" "${cpu_load}"
+printf "|___|___|_| |_  |      RAM Usage: %s GiB / %s GiB \n" "${memory_usage}" "${memory_available}"
+printf "            |___|      Uptime: %s \n" "${sys_uptime}"
+printf "\n"
+printf "tank: %s / %s | media %s / %s | vm: %s / %s \n" "${tank_used}" "${tank_avail}" "${media_used}" "${media_avail}" "${vm_used}" "${vm_avail}"

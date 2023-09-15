@@ -4,8 +4,11 @@ zfs set atime=off
 zfs set xattr=sa
 ```
 
-# media
-videos + large backups
+# vault
+/media
+/backups/veeam
+/backups/steambackup
+/cloud_pulls
 ```sh
 zfs set recordsize=1M
 zfs set compression=lz4

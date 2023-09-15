@@ -8,3 +8,5 @@ alias nload='nload devices vmbr0 wg0'
 alias zfsspace='zfs list -o name,usedds,usedsnap'
 # start rsync server here
 alias rsynchere='docker run --rm -p 873:873 -v ./:/data ghcr.io/mchangrh/drsync:latest'
+# rsync move
+alias rsmv='rsync -azvh --remove-source-files --progress'

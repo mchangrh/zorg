@@ -24,7 +24,7 @@ else
   rclone_move() {
     rclone_command=$(
       /usr/bin/rclone sync -P \
-        --config=/root/.config/rclone/rclone.conf \
+        --config=/etc/rclone-sync/rclone.conf \
         --copy-links \
         --drive-stop-on-upload-limit \
         --drive-stop-on-download-limit \

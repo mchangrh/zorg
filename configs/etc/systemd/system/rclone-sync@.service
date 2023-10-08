@@ -5,8 +5,8 @@ Description=Automated rclone sync for %I
 User=root
 Type=oneshot
 Environment="JOB=%I"
-EnvironmentFile=/etc/rclone-sync/default.conf
-EnvironmentFile=/etc/rclone-sync/%I.conf
+EnvironmentFile=/etc/rclone-sync/default.env
+EnvironmentFile=/etc/rclone-sync/%I.env
 ExecStart=/usr/local/bin/rclone-sync.sh
 
 [Install]

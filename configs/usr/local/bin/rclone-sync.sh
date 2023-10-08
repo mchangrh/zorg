@@ -11,8 +11,8 @@ trap 'rm -f $LOCK_FILE; exit 0' SIGINT SIGTERM
 if [ -e "$LOCK_FILE" ]; then
   echo "$JOB is already running."
   exit
-elif rclone lsd "$SOURCE_DIR".ignore 2> /dev/null || rclone lsd "$DESTINATION_DIR".ignore 2> /dev/null ; then
-  echo "%i skipped due to .ignore folder"
+elif [ -z "$SKIP_IGNORE" ] && (rclone lsd "$SOURCE_DIR".ignore 2> /dev/null || rclone lsd "$DESTINATION_DIR".ignore 2> /dev/null) ; then
+  echo "$JOB skipped due to .ignore folder"
   fail_data='{
     "username": "'"$JOB - rclone"'",
     "content": "skipped due to .ignore folder"
@@ -28,6 +28,7 @@ else
         --copy-links \
         --drive-stop-on-upload-limit \
         --drive-stop-on-download-limit \
+        --fast-list \
         --log-file="$LOG_FILE" \
         --log-level=INFO \
         --progress \

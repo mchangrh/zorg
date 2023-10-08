@@ -10,3 +10,5 @@ alias zfsspace='zfs list -o name,usedds,usedsnap'
 alias rsynchere='docker run --rm -p 873:873 -v ./:/data ghcr.io/mchangrh/drsync:latest'
 # rsync move
 alias rsmv='rsync -azvh --remove-source-files --progress'
+# zstd max
+alias zstdmax='zstd -T0 -22 --ultra --long'

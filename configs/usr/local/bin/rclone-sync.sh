@@ -25,6 +25,7 @@ else
     rclone_command=$(
       /usr/bin/rclone sync -P \
         --config=/etc/rclone-sync/rclone.conf \
+        --cache-dir=/etc/rclone-sync \
         --copy-links \
         --drive-stop-on-upload-limit \
         --drive-stop-on-download-limit \

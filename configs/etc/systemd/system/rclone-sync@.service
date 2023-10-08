@@ -1,0 +1,13 @@
+[Unit]
+Description=Automated rclone sync for %I
+
+[Service]
+User=root
+Type=oneshot
+Environment="JOB=%I"
+EnvironmentFile=/etc/rclone-sync/default.conf
+EnvironmentFile=/etc/rclone-sync/%I.conf
+ExecStart=/usr/local/bin/rclone-sync.sh
+
+[Install]
+WantedBy=multi-user.target

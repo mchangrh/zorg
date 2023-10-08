@@ -13,3 +13,9 @@ root:995:1
 # adding users
 useradd -MNr username
 - no home, no group, system account
+
+set no home
+`usermod -d /nonexistent username`
+
+set no login shell
+`usermod -s /usr/sbin/nologin username`

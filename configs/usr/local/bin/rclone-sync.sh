@@ -1,8 +1,6 @@
 #!/bin/bash
-#
-# rclone upload script with optional Discord notification upon move completion (if something is moved)
-# Credit to @XantherBanter - Github
-#
+# rclone upload script with Discord notifications
+# https://github.com/XantherBanter
 # -----------------------------------------------------------------------------
 LOCK_FILE="/run/rclone-$JOB.lock"
 LOG_FILE="/var/log/rclone/$JOB.log"
